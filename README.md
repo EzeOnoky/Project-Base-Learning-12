@@ -14,4 +14,5 @@ In this project we will continue working with **ansible-config-mgt** repository 
 - Create assignments
 - Import Playbook functionality
 
-Imports allows effective re-use previously created playbooks in a new playbook – it allows you to organize your tasks and reuse them when needed.
+**Code Refactoring** ...this is the process of restructuring existing computer code. Refactoring is a general term in computer programming. It means making changes to the source code without changing expected behaviour of the software. For this project, you will move things around a little bit in the code, but the overal state of the infrastructure remains the same.
+**Imports** allows effective re-use previously created playbooks in a new playbook – it allows you to organize your tasks and reuse them when needed.
