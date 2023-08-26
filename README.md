@@ -103,8 +103,16 @@ If both Jenkins jobs have completed one after another – you shall see your fil
 
 Before starting to refactor the codes, ensure that you have pulled down the latest code from **main** branch, and created a new branch, name it **refactor** . DevOps philosophy implies constant iterative improvement for better efficiency – refactoring is one of the techniques that can be used.
 
+Now Connect to **ansible-config-mgt** on your Powershell...via VS CODE, and execute below.
 
+```
+git status
+git pull
+git checkout -b refactor
+```
+Notice you are now in the new branch - **refactor** after you execute the last command...
 
+![12_8](https://github.com/EzeOnoky/Project-Base-Learning-12/assets/122687798/43341f9c-bd37-45bd-853b-80e58e2c5b70)
 
 In Project-11, all the tasks are written in a single playbook common.yml. These are pretty simple set of instructions for only 2 types of OS. In a case where we have many more tasks and we need to apply this playbook to other servers with different requirements, We will have to read through the whole playbook to check if all tasks written there are applicable and to check if there is anything that needs to be added for certain server/OS families. This will become a tedious exercise and the playbook will become messy which will make it difficult for your colleagues to use your playbook.
 
@@ -116,11 +124,9 @@ Let see code re-use in action by importing other playbooks.
 
 - 2_A : Within the **playbooks** directory, create a new file and name it **site.yml**. This file will be an entry point into the entire infrastructure configuration. Other playbooks will be included here as a reference. In other words, **site.yml** will become a parent to all other playbooks that will be developed. Including *common.yml* that was created previously. 
 
-- 2_B : Create a new directory withing the **ansible-config-mgt** directory and name it **static-assignment**. The static-assignment directory is where all other children playbooks will be stored.This is merely for easy organization of your work.
+- 2_B : Create a new directory within the **ansible-config-mgt** directory and name it **static-assignment**. The static-assignment directory is where all other children playbooks will be stored.This is merely for easy organization of your work.
 
 - 2_C :  Move **common.yml** file into the newly created **static-assignment** directory.
-
-### 12_7 pix showing 1 & 2 above
 
 - 2_D : Inside **playbooks/site.yml** file, import **common.yml** playbook.
 
@@ -129,9 +135,9 @@ Let see code re-use in action by importing other playbooks.
 - hosts: all
 - import_playbook: ../static-assignments/common.yml
 ```
-Your folder structure should look like this;
 
-### 12_8 PIX OF YOUR NEW OLDER STRUCTURE
+![12_9](https://github.com/EzeOnoky/Project-Base-Learning-12/assets/122687798/0124f891-8f25-4216-b5fc-4d799194b3f8)
+
 
 - 2_E : Run **ansible-playbook** command against the **inventory/dev.yml** environment
 
@@ -142,8 +148,9 @@ We will configure this playbook to delete wireshark utility.  In the **static-as
 ```
 ---
 - name: update web, nfs and db servers
-  hosts: wbsrvrs, nfs, dbsrvr
+  hosts: WEB, NFS, DB
   remote_user: ec2-user
+  become: yes
   become_user: root
   tasks:
   - name: delete wireshark
@@ -152,8 +159,9 @@ We will configure this playbook to delete wireshark utility.  In the **static-as
       state: removed
 
 - name: update LB server
-  hosts: lb
+  hosts: LB
   remote_user: ubuntu
+  become: yes
   become_user: root
   tasks:
   - name: delete wireshark
@@ -165,7 +173,8 @@ We will configure this playbook to delete wireshark utility.  In the **static-as
       autoclean: yes
 ```
 
-### 12_9 pix showing update of above on common-del.yml
+![12_10](https://github.com/EzeOnoky/Project-Base-Learning-12/assets/122687798/2db8ff46-9e18-4f7c-af3b-f3bd9aca66d1)
+
 
 Update **playbooks/site.yml** with the following snippet replacing **common.yml** with **common-del.yml** and run it against dev servers:
 
@@ -174,6 +183,9 @@ Update **playbooks/site.yml** with the following snippet replacing **common.yml*
 - hosts: all
 - import_playbook: ../static-assignments/common-del.yml
 ```
+
+![12_11](https://github.com/EzeOnoky/Project-Base-Learning-12/assets/122687798/cbbb8283-4f2d-4620-b9f5-8bb2061e1078)
+
 
 To push the codes to github and merge to the main branch
 
@@ -186,20 +198,26 @@ git commit -m "<commit-message>"
 git push origin refactor
 ```
 
-### 12_10 pix showing OK execution of above
+![12_12](https://github.com/EzeOnoky/Project-Base-Learning-12/assets/122687798/2f200d39-8baf-4986-8eb8-388aea8e2ba0)
 
 We then go to the github and create a pull request, Merge to the main branch
 
 We can see the Jenkins build as soon as the code is merged to the main branch
 
-### 12_11 pix showing OK execution of above
+![12_13](https://github.com/EzeOnoky/Project-Base-Learning-12/assets/122687798/41907f99-1527-4205-b9dd-0d1b86cb05cf)
+
+
+![12_14](https://github.com/EzeOnoky/Project-Base-Learning-12/assets/122687798/4a2252ac-7ec2-4c2f-943f-356a87f5c2c4)
 
 
 The artifact is saved in the ansible-config-artifact directory in the jenkins server.
 
 We then run the playbook
 
-`ansible-playbook -i ansible-config-artifact/inventory/dev.yml ansible-config-artifact/playbooks/site.yaml`
+ansible all -m ping -i /var/lib/jenkins/jobs/ANSIBLE/builds/5/archive/inventory/dev.yml
+ansible-playbook -i /var/lib/jenkins/jobs/ANSIBLE/builds/5/archive/inventory/dev.yml /var/lib/jenkins/jobs/ANSIBLE/builds/5/archive/playbooks/site.yml --syntax-check
+
+`ansible-playbook -i ansible-config-artifact/inventory/dev.yml ansible-config-artifact/playbooks/site.yml`
 
 ### 12_11 pix showing OK execution of above
 
