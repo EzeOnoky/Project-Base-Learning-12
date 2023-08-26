@@ -14,7 +14,7 @@ In this project we will continue working with **ansible-config-mgt** repository 
 - Create Static assignments
 - Import Playbook functionality
 
-**Code Refactoring** ...this is the process of restructuring existing computer code. Refactoring is a general term in computer programming. It means making changes to the source code without changing expected behaviour of the software. For this project, you will move things around a little bit in the code, but the overal state of the infrastructure remains the same.
+**Code Refactoring** ...this is the process of restructuring existing computer code. Refactoring is a general term in computer programming. It means making changes to the source code without changing expected behaviour of the software. For this project, you will move things around a little bit in the code, but the overall state of the infrastructure remains the same.
 
 **Imports** allows effective re-use previously created playbooks in a new playbook – it allows you to organize your tasks and reuse them when needed.
 
@@ -24,6 +24,7 @@ In this project we will continue working with **ansible-config-mgt** repository 
 
 **Static Assignments** here, the values of variables are defined and fixed at the time of writing the playbook. 
 
+### move to project 13
 Dynamic assignments are useful in scenarios where the values of variables need to be determined based on certain conditions or inputs.
 
 There are several ways to perform dynamic assignments in ansible. Some of the common methods are:
@@ -53,47 +54,57 @@ In summary, dynamic assignments in ansible allow you to use variables whose valu
 
 ## STEP 1 - JENKINS JOB ENHANCEMENT  
 
-In our previous projects 9 & 11, Jenkins was configured to create a directory for every change in the code which consumes space in the Jenkins server. To fix this we will be making changes using **copy artifact** plugin.
+In our previous projects 9 & 11, Jenkins was configured to create a directory for every change in the code, this consumes space in the Jenkins server. To fix this we will be making changes using **copy artifact** plugin.
 
-In our "Jenkins-Ansible server", We create a new directory called **ansible-config-artifact** where we will store all artifacts after each build.
+In our "Jenkins-Ansible server", We create a new directory called **ansible-config-artifact** where we will store all artifacts after each build, Change permissions to this directory, so Jenkins can save files in the ansible-config-artifact.
 
-`sudo mkdir ansible-config-artifact`
+First start up all your previous Instances from project 11, from VS CODE, connect to your JENKINS-ANSIBLE via the path PS C:\Users\EZEPC\Desktop\DevOps> where your .PEM kkey is stored.
 
-Change permissions to this directory, so Jenkins can save files in the ansible-config-artifact.
+```
+ssh -A ubuntu@54.81.72.41
+sudo mkdir ansible-config-artifact
+sudo chmod -R 0777 ansible-config-artifact
+```
 
-`sudo chmod -R 0777 ansible-config-artifact`
+![12_2](https://github.com/EzeOnoky/Project-Base-Learning-12/assets/122687798/a8f80b7a-b300-40d4-8581-62fa329a307c)
 
-### 12_2
 
-Go to Jenkins web console click on **Manage Jenkins** then click on **Manage Plugins**, On available tab search for **Copy Artifact** and install this plugin without restarting Jenkins. Create a new Freestyle project and name it **save_artifacts**
+Go to Jenkins web console click on **Manage Jenkins** then click on **Manage Plugins**, On available tab search for **Copy Artifact** and install this plugin without restarting Jenkins.
 
-### 12_3 showing all steps above
+![12_3](https://github.com/EzeOnoky/Project-Base-Learning-12/assets/122687798/b56e047f-a1f9-4f60-a4c8-1dae7b1fab62)
 
-This project will be triggered by completion of your existing ansible project. Configure it accordingly:
+
+ Create a new Freestyle project and name it **save_artifacts**
+
+ ![12_4](https://github.com/EzeOnoky/Project-Base-Learning-12/assets/122687798/374201d4-dcd6-45fb-b319-5881036bd6e9)
+
+
+This project will be triggered by completion of your existing ANSIBLE project. Configure it accordingly:
 
 Go to configurations, make the following changes.
 
 We can configure the number of builds to keep in order to save space on the server. In this project we want to keep the last 2 builds, We update the Source **Code Management** section.
 
-### 12_4
+![12_5](https://github.com/EzeOnoky/Project-Base-Learning-12/assets/122687798/75ca017b-0894-4d4e-b8ff-8e334a8adf28)
 
 The main idea of **save_artifacts** project is to save artifacts into **/home/ubuntu/ansible-config-artifact** directory. To achieve this, we will create a Build step and choose Copy artifacts from our previous ansible project. We will specify ansible as a source project and **/home/ubuntu/ansible-config-artifact** as a target directory.
 
-### 12_5 showing above steps
+![12_6](https://github.com/EzeOnoky/Project-Base-Learning-12/assets/122687798/e7212f1d-716c-42b3-a346-7ff225d7dd69)
 
-Then click on apply and save.
+Then click on apply and save to see the Expect Result as seen in Step 16 above.
 
 To test this setup, we will be making some changes in the README.MD file inside the **ansible-config-mgt** repository.
 
-If both Jenkins jobs have completed one after another – you shall see your files inside **/home/ubuntu/ansible-config-artifact** directory and it will be updated with every commit to your main branch.
+If both Jenkins jobs have completed one after another – you shall see your files inside **/home/ubuntu/ansible-config-artifact** directory and it will be updated with every commit to your main branch. Remember to update your GITHUB  **ansible-config-mgt** repository with the current Ansible URL..
 
-### Pix showing success execution of above step
+![12_7](https://github.com/EzeOnoky/Project-Base-Learning-12/assets/122687798/85ddef8f-a3a3-4b38-baf2-9c5559d3f5e3)
 
 ## STEP 2 - REFACTOR ANSIBLE CODE BY IMPORTING OTHER PLAYBOOKS INTO SITE.YML
 
 Before starting to refactor the codes, ensure that you have pulled down the latest code from **main** branch, and created a new branch, name it **refactor** . DevOps philosophy implies constant iterative improvement for better efficiency – refactoring is one of the techniques that can be used.
 
-### 12_6 PIX showing execution of above
+
+
 
 In Project-11, all the tasks are written in a single playbook common.yml. These are pretty simple set of instructions for only 2 types of OS. In a case where we have many more tasks and we need to apply this playbook to other servers with different requirements, We will have to read through the whole playbook to check if all tasks written there are applicable and to check if there is anything that needs to be added for certain server/OS families. This will become a tedious exercise and the playbook will become messy which will make it difficult for your colleagues to use your playbook.
 
