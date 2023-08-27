@@ -215,9 +215,10 @@ The artifact is saved in the ansible-config-artifact directory in the jenkins se
 We then run the playbook
 
 ansible all -m ping -i /var/lib/jenkins/jobs/ANSIBLE/builds/5/archive/inventory/dev.yml
+
 ansible-playbook -i /var/lib/jenkins/jobs/ANSIBLE/builds/5/archive/inventory/dev.yml /var/lib/jenkins/jobs/ANSIBLE/builds/5/archive/playbooks/site.yml --syntax-check
 
-`ansible-playbook -i ansible-config-artifact/inventory/dev.yml ansible-config-artifact/playbooks/site.yml`
+ansible-playbook -i ansible-config-artifact/inventory/dev.yml ansible-config-artifact/playbooks/site.yml
 
 ### 12_11 pix showing OK execution of above
 
