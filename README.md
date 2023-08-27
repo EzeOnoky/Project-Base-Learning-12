@@ -211,18 +211,26 @@ We can see the Jenkins build as soon as the code is merged to the main branch
 
 The artifact is saved in the ansible-config-artifact directory in the jenkins server.
 
-We then run the playbook
+We then run the playbook, ensure this is ran after you SSH into your Jenkins-Ansible server using `ssh -A ubuntu@<jenkins-ansible-public-IP-address>` follow below step guide
 
+![12_16](https://github.com/EzeOnoky/Project-Base-Learning-12/assets/122687798/1ba1849f-ec45-4fbf-880c-d8544774c7c6)
+
+
+```
 ansible all -m ping -i /var/lib/jenkins/jobs/ANSIBLE/builds/5/archive/inventory/dev.yml
 
 ansible-playbook -i /var/lib/jenkins/jobs/ANSIBLE/builds/5/archive/inventory/dev.yml /var/lib/jenkins/jobs/ANSIBLE/builds/5/archive/playbooks/site.yml --syntax-check
 
-ansible-playbook -i ansible-config-artifact/inventory/dev.yml ansible-config-artifact/playbooks/site.yml
+ansible-playbook -i inventory/dev.yml playbooks/site.yml
+```
 
 ![12_15](https://github.com/EzeOnoky/Project-Base-Learning-12/assets/122687798/0a5bd786-6f08-4e9a-8f67-a44fa1633228)
 
 
 To check that wireshark is deleted on all the servers, we run the comand on the various target servers.
+
+ssh ec2-user@<WEB1-Private-IP-address>
+ssh ubuntu@<LB-Private-IP-address>
 
 `wireshark --version`
 
