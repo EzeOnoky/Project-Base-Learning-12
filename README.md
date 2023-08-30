@@ -230,11 +230,18 @@ ansible-playbook -i inventory/dev.yml playbooks/site.yml
 To check that wireshark is deleted on all the servers, we run the comand on the various target servers.
 
 ssh ec2-user@<WEB1-Private-IP-address>
+
 ssh ubuntu@<LB-Private-IP-address>
 
-`wireshark --version`
+```
+ssh ubuntu@172.31.34.225
+wireshark --version
 
-### 12_12 pix showing OK execution of above
+ssh ec2-user@172.31.41.85
+wireshark --version
+```
+
+![12_17](https://github.com/EzeOnoky/Project-Base-Learning-12/assets/122687798/0bcd3ed7-0c18-4bd1-8f92-312308722ec7)
 
 Now you have learned how to use import_playbooks module and you have a ready solution to install/delete packages on multiple servers with just one command.
 
@@ -244,11 +251,13 @@ We have our nice and clean **dev** environment, so let us put it aside and confi
 
 **Roles** let you automatically load related vars, files, tasks, handlers, and other Ansible artifacts based on a known file structure. After you group your content in roles, you can easily reuse them and share them with other users.
 
-- 3_A : Launch 2 fresh EC2 instances using RHEL 8 image, we will use them as our UAT servers, so give them names accordingly – **Web1-UAT** and **Web2-UAT**
+- 3_A : Launch 2 fresh EC2 instances for UAT Web Server
+Using RHEL 9 image, we launch 2 new web sever, we will use them as our UAT servers, so give them names accordingly – **Web1-UAT** and **Web2-UAT**
 
 **TAKE NOTE**: power off all other instances not in use to avoid extra cost. We are just going to be using the Jenkins server and the UAT webservers for this section.
 
-- 3_B : To create a role, you must create a directory called **roles/** , relative to the playbook file or in **/etc/ansible/** directory.
+- 3_B : Create a role
+To create a **Role**, You must create a directory called **roles/** , relative to the playbook file or in **/etc/ansible/** directory.
 
 There are two ways how you can create this folder structure
 
