@@ -266,18 +266,20 @@ There are two ways how you can create this folder structure
   Firstly, you have to enable WSL(Windows Subsystem for Linux) on your local machine, you can use [GUI](https://linuxhint.com/enable-wsl-optional-component/) of use [CMD](https://bobbyhadz.com/blog/sudo-is-not-recognized-as-internal-or-external-command#:~:text=The%20error%20%22'sudo'%20is,administrator%20before%20issuing%20the%20command.)
 
 Incase **80072ee2** occurs, use this to [Troubleshoot](https://theitbros.com/how-to-solve-the-windows-update-error-80072ee2/)
-    ```
-    mkdir roles
-    cd roles
-    ansible-galaxy init webserver
-    sudo apt install tree -y
-    tree webserver
-    ```
+
+```
+mkdir roles
+cd roles
+ansible-galaxy init webserver
+sudo apt install tree -y
+tree webserver
+```
+
   2 - Create the directory/files structure manually
 
 Option 1 was choosen, - 
 
-### 12_13 pix showing OK execution of above CMD
+![12_18](https://github.com/EzeOnoky/Project-Base-Learning-12/assets/122687798/923a734b-f72e-42f4-acd3-acf2b6e1f013)
 
 The entire directory structure should look like below after removing unnecessary directories and files
 
