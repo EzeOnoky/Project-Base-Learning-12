@@ -263,6 +263,9 @@ There are two ways how you can create this folder structure
 
   1 - Use an Ansible utility called ansible-galaxy inside ansible-config-mgt/roles directory (you need to create roles directory upfront)
 
+  Firstly, you have to enable WSL(Windows Subsystem for Linux) on your local machine, you can use [GUI](https://linuxhint.com/enable-wsl-optional-component/) of use [CMD](https://bobbyhadz.com/blog/sudo-is-not-recognized-as-internal-or-external-command#:~:text=The%20error%20%22'sudo'%20is,administrator%20before%20issuing%20the%20command.)
+
+Incase **80072ee2** occurs, use this to [Troubleshoot](https://theitbros.com/how-to-solve-the-windows-update-error-80072ee2/)
     ```
     mkdir roles
     cd roles
