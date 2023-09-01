@@ -304,11 +304,13 @@ The entire directory structure should look like below after removing unnecessary
 
 - 3_G : Go into tasks directory, and within the main.yml file, start writing configuration tasks to do the following:
 
-*DEVELOP YOUR OWN SCRIPT*
-1 - Install and configure Apache (httpd service)
-2 - Clone Tooling website from [GitHub](https://github.com/EzeOnoky/Tooling-Web)
-3 - Ensure the tooling website code is deployed to /var/www/html on each of 2 UAT Web servers.
-4 - Make sure httpd service is started.
+    1 - Install and configure Apache (httpd service)
+
+    2 - Clone Tooling website from [GitHub](https://github.com/EzeOnoky/Tooling-Web)
+
+    3 - Ensure the tooling website code is deployed to /var/www/html on each of 2 UAT Web servers.
+
+    4 - Make sure httpd service is started.
 
 Your **main.yml** should consist of following tasks:
 
@@ -326,7 +328,7 @@ Your **main.yml** should consist of following tasks:
 
 - name: clone a repo
   git:
-    repo: https://github.com/<your-name>/tooling.git
+    repo: https://github.com/EzeOnoky/Tooling-Web
     dest: /var/www/html
     force: yes
 
