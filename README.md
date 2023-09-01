@@ -392,12 +392,10 @@ git commit -m "<commit-message>"
 git push origin refactor
 ```
 
-
-### 12_20 pix showing OK of above
-
 Create a pull request, then merge to main branch, The Jenkins builds automatically. Then saves the artifact in the ansible-config-artifact Jenkins server.
 
-### 12_21 pix showing OK of above
+![12_21](https://github.com/EzeOnoky/Project-Base-Learning-12/assets/122687798/f084ae6f-6702-489b-ae6a-1557955a6a3a)
+
 
 Now we run the playbook
 
