@@ -279,15 +279,15 @@ tree webserver
 
 Option 1 was choosen, - 
 
-![12_18](https://github.com/EzeOnoky/Project-Base-Learning-12/assets/122687798/923a734b-f72e-42f4-acd3-acf2b6e1f013)
-
 The entire directory structure should look like below after removing unnecessary directories and files
 
-### 12_14 pix showing THE new tree
+![12_18](https://github.com/EzeOnoky/Project-Base-Learning-12/assets/122687798/923a734b-f72e-42f4-acd3-acf2b6e1f013)
+
 
 - 3_C : Update your inventory **ansible-config-mgt/inventory/uat.yml** file with IP addresses of your 2 UAT Web servers
 
-### 12_15 pix showing OK update
+![12_19](https://github.com/EzeOnoky/Project-Base-Learning-12/assets/122687798/b989829d-f8fd-4371-9d57-9898b2079c4b)
+
 
 - 3_D : Update the jenkins /etc/hosts directory with the UAT webservers.
 
@@ -299,15 +299,16 @@ The entire directory structure should look like below after removing unnecessary
 
 - 3_F : Go to /etc/ansible/ansible.cfg and update
 
-### 12_17 pix showing OK UPDATE
+![12_20](https://github.com/EzeOnoky/Project-Base-Learning-12/assets/122687798/0bef48f0-be29-494d-85f1-ae86a5f03372)
+
 
 - 3_G : Go into tasks directory, and within the main.yml file, start writing configuration tasks to do the following:
 
 *DEVELOP YOUR OWN SCRIPT*
-Install and configure Apache (httpd service)
-Clone Tooling website from GitHub **https://github.com/dybran/tooling.git**
-Ensure the tooling website code is deployed to /var/www/html on each of 2 UAT Web servers.
-Make sure httpd service is started.
+1 - Install and configure Apache (httpd service)
+2 - Clone Tooling website from [GitHub](https://github.com/EzeOnoky/Tooling-Web)
+3 - Ensure the tooling website code is deployed to /var/www/html on each of 2 UAT Web servers.
+4 - Make sure httpd service is started.
 
 Your **main.yml** should consist of following tasks:
 
