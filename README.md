@@ -397,7 +397,24 @@ Create a pull request, then merge to main branch, The Jenkins builds automatical
 ![12_21](https://github.com/EzeOnoky/Project-Base-Learning-12/assets/122687798/f084ae6f-6702-489b-ae6a-1557955a6a3a)
 
 
-Now we run the playbook
+Ensure you are able to 1st ssh into the slave Jenkins Server...from the Master Jenkins server
+
+```
+ssh ec2-user@172.31.42.157
+ssh ec2-user@172.31.42.157
+```
+
+You will continue receiving below error message, if you dont 1st execute above command
+
+![12_22](https://github.com/EzeOnoky/Project-Base-Learning-12/assets/122687798/f029e8e8-62c8-4b6f-b7de-e65a56a0c075)
+
+Run an Ansible ping test to confirm you slave Jenkins servers on the **uat.yml** are OK and reachable...
+
+`ansible all -m ping -i inventory/uat.yml`
+
+Now we run the playbook, ensure you ssh into your Jenkins-Ansible Server and open the folder of the latest build on this path - 
+
+`/var/lib/jenkins/jobs/ANSIBLE/builds/11/`
 
 `ansible-playbook -i /ansible-config-artifact/inventory/uat.yml /ansible-config-artifact/playbooks/site.yml`
 
