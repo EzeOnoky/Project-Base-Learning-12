@@ -424,7 +424,13 @@ Now we run the playbook, ensure you ssh into your Jenkins-Ansible Server and ope
 
 `ansible-playbook -i /ansible-config-artifact/inventory/uat.yml /ansible-config-artifact/playbooks/site.yml`
 
-### 12_22 pix showing OK of above
+![12_24](https://github.com/EzeOnoky/Project-Base-Learning-12/assets/122687798/9929f4e0-89b1-49dc-8442-29d71f0ec21c)
+
+
+
+![12_25](https://github.com/EzeOnoky/Project-Base-Learning-12/assets/122687798/5183b8b6-2bc0-4d41-bcfd-0b543ce75205)
+
+
 
 We should be able to see both of the UAT Webservers configured and can reach them from the browser:
 
