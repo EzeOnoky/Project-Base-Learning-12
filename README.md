@@ -187,9 +187,7 @@ Update **playbooks/site.yml** with the following snippet replacing **common.yml*
 ![12_11](https://github.com/EzeOnoky/Project-Base-Learning-12/assets/122687798/cbbb8283-4f2d-4620-b9f5-8bb2061e1078)
 
 
-To push the codes to github and merge to the main branch
-
-We run the commands
+To push the codes to github and merge to the main branch, We run the commands. Before executing below commands, ensure you have saved ALL the changes made to .yml files on your VS Code. Best is to do auto save, so that ALL your changes will auto save.
 
 ```
 git status
@@ -267,13 +265,20 @@ There are two ways how you can create this folder structure
 
 Incase **80072ee2** occurs, use this to [Troubleshoot](https://theitbros.com/how-to-solve-the-windows-update-error-80072ee2/)
 
+Below were done from the WSL terminal connection 
 ```
+pwd
+cd ../../
+cd /mnt/c/Users/EZEPC/ansible-config-mgt/
 mkdir roles
 cd roles
 ansible-galaxy init webserver
 sudo apt install tree -y
 tree webserver
 ```
+
+![12_18a](https://github.com/EzeOnoky/Project-Base-Learning-12/assets/122687798/3b0b7b31-0286-48fe-a7f9-8e7f61bfdee5)
+
 
   2 - Create the directory/files structure manually
 
@@ -291,7 +296,8 @@ The entire directory structure should look like below after removing unnecessary
 
 - 3_D : Update the jenkins /etc/hosts directory with the UAT webservers.
 
-### 12_16 pix showing OK update
+![12_19a](https://github.com/EzeOnoky/Project-Base-Learning-12/assets/122687798/6d01fb0a-f9a1-4570-9cc8-6e2ef9e825f0)
+
 
 - 3_E : Check for connectivity to the uat-webservers
 
@@ -299,7 +305,7 @@ The entire directory structure should look like below after removing unnecessary
 
 - 3_F : Go to /etc/ansible/ansible.cfg and update
 
-![12_20](https://github.com/EzeOnoky/Project-Base-Learning-12/assets/122687798/0bef48f0-be29-494d-85f1-ae86a5f03372)
+![12_20](https://github.com/EzeOnoky/Project-Base-Learning-12/assets/122687798/ec9cddfc-5f1f-430d-a6fa-66c4adeb3a52)
 
 
 - 3_G : Go into tasks directory, and within the main.yml file, start writing configuration tasks to do the following:
