@@ -301,7 +301,6 @@ The entire directory structure should look like below after removing unnecessary
 
 - 3_E : Check for connectivity to the uat-webservers
 
-### 12_16 pix showing OK ping
 
 - 3_F : Go to /etc/ansible/ansible.cfg and update
 
@@ -356,8 +355,6 @@ Your **main.yml** should consist of following tasks:
 
 Within the **static-assignment** directory, create a new assignment for **uat-webservers uat-webservers.yml**. This is where we will reference the role.
 
-### 12_18 pix showing OK of above
-
 Update the uat-webservers.yml file
 
 ```
@@ -366,8 +363,6 @@ Update the uat-webservers.yml file
   roles:
      - webserver
 ```
-
-### 12_18 pix showing OK of above
 
 Remember that the entry point to our ansible configuration is the **site.yml** file. Therefore, you need to refer your **uat-webservers.yml** role inside **site.yml**
 
@@ -381,9 +376,6 @@ So, we should have this in site.yml
 - hosts: all
 - import_playbook: ../static-assignments/uat-webservers.yml
 ```
-
-### 12_19 pix showing OK of above
-
 
 ## STEP 5 - COMMIT AND TEST
 
@@ -436,6 +428,6 @@ We should be able to see both of the UAT Webservers configured and can reach the
 
 http://<Web01-UAT-Server-Public-IP-or-Public-DNS-Name>/index.php
 
-### 12_23 pix showing OK of above
+![12_26](https://github.com/EzeOnoky/Project-Base-Learning-12/assets/122687798/76513fe4-3fbd-4ceb-866c-63b33b4fef10)
 
 # CONGRATULATIONS Eze ! You have just deployed and configured UAT Web Servers using Ansible imports and roles.
