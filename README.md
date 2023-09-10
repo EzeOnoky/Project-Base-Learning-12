@@ -24,8 +24,7 @@ In this project we will continue working with **ansible-config-mgt** repository 
 
 **Static Assignments** here, the values of variables are defined and fixed at the time of writing the playbook. 
 
-### move to project 13
-Dynamic assignments are useful in scenarios where the values of variables need to be determined based on certain conditions or inputs.
+More on Dynamic assignments will be discussed in project 13, however, they are useful in scenarios where the values of variables need to be determined based on certain conditions or inputs.
 
 There are several ways to perform dynamic assignments in ansible. Some of the common methods are:
 
