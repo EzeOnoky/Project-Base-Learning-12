@@ -423,11 +423,43 @@ Now we run the playbook, ensure you ssh into your Jenkins-Ansible Server and ope
 ![12_25](https://github.com/EzeOnoky/Project-Base-Learning-12/assets/122687798/5183b8b6-2bc0-4d41-bcfd-0b543ce75205)
 
 
-
-We should be able to see both of the UAT Webservers configured and can reach them from the browser:
+We should be able to see both of the UAT Webservers configured and can reach them from the browser.
 
 http://<Web01-UAT-Server-Public-IP-or-Public-DNS-Name>/index.php
+
+**NOTE** Below changes will be required, if our default apache page is to change to the tooling website page....
+
+```
+sudo systemctl status httpd
+cd ..
+sudo setenforce 0
+sudo vi /etc/sysconfig/selinux        => set SELINUX=enforcing to SELINUX=disabled
+```
+
+By default, the apache page loads with index.html , this need to be changed to index.php - which is already downloaded on our tooling repo
+
+`sudo vi /etc/httpd/conf/httpd.conf`
+
+Run above, scroll down to the populate setting configurations, and locate the IF Module
+... i proceeded to change from index.html , to index.php
+
+After these changes, Apache was reloaded...
+
+```
+sudo systemctl reload httpd
+sudo systemctl start httpd
+sudo systemctl status httpd
+```
+
+On reloading the web server page(with web server public IP), below was displayed...instead of the default APACHE page.
 
 ![12_26](https://github.com/EzeOnoky/Project-Base-Learning-12/assets/122687798/76513fe4-3fbd-4ceb-866c-63b33b4fef10)
 
 # CONGRATULATIONS Eze ! You have just deployed and configured UAT Web Servers using Ansible imports and roles.
+
+
+# Challenges 
+
+I kept getting error of wrong synthax while loading the YAML file, to solve this, some updates were done on */etc/ansible/ansible.cfg*....see below..
+
+![12_27](https://github.com/EzeOnoky/Project-Base-Learning-12/assets/122687798/d9cb2395-1433-4c22-ba57-ce96fd7e20c8)
