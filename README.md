@@ -276,6 +276,10 @@ sudo apt install tree -y
 tree webserver
 ```
 
+**NOTE**  
+- `ansible-galaxy init webserver` you create a role - **webserver** ...with the init command.
+- `ansible-galaxy install geerlingguy.nginx` with this, you download a ready-to-use role **geerlingguy.nginx** from Galaxy Server. More of this in project 13.
+
 ![12_18a](https://github.com/EzeOnoky/Project-Base-Learning-12/assets/122687798/3b0b7b31-0286-48fe-a7f9-8e7f61bfdee5)
 
 
