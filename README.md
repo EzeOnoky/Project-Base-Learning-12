@@ -57,7 +57,13 @@ In our previous projects 9 & 11, Jenkins was configured to create a directory fo
 
 In our "Jenkins-Ansible server", We create a new directory called **ansible-config-artifact** where we will store all artifacts after each build, Change permissions to this directory, so Jenkins can save files in the ansible-config-artifact.
 
+Check to ensure your earlier created folder **ansible-config-mgt** is still active on your Jenkins-Ansible server, if you dont see the folder(as it was experienced when this project was done, clone the project from your repo...see below.
+
+![12_2a](https://github.com/EzeOnoky/Project-Base-Learning-12/assets/122687798/abad4e12-a7c2-47c1-bc2e-22631df36816)
+
+
 First start up all your previous Instances from project 11, from VS CODE, connect to your JENKINS-ANSIBLE via the path PS C:\Users\EZEPC\Desktop\DevOps> where your .PEM kkey is stored.
+
 
 ```
 ssh -A ubuntu@54.81.72.41
