@@ -90,7 +90,8 @@ Go to configurations, make the following changes.
 
 We can configure the number of builds to keep in order to save space on the server. In this project we want to keep the last 2 builds, We update the Source **Code Management** section.
 
-![12_5](https://github.com/EzeOnoky/Project-Base-Learning-12/assets/122687798/75ca017b-0894-4d4e-b8ff-8e334a8adf28)
+![12_5](https://github.com/EzeOnoky/Project-Base-Learning-12/assets/122687798/00b1b088-6fe2-4461-bf1d-b6da374f562f)
+
 
 The main idea of **save_artifacts** project is to save artifacts into **/home/ubuntu/ansible-config-artifact** directory. To achieve this, we will create a Build step and choose Copy artifacts from our previous ansible project. We will specify ansible as a source project and **/home/ubuntu/ansible-config-artifact** as a target directory.
 
