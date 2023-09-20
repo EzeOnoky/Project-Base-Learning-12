@@ -261,17 +261,19 @@ Now you have learned how to use import_playbooks module and you have a ready sol
 
 ## STEP 3 - CONFIGURE UAT WEBSERVERS WITH A ROLE ‘WEBSERVER’
 
-We have our nice and clean **dev** environment, so let us put it aside and configure 2 new Web Servers as **UAT**. We could write tasks to configure Web Servers in the same playbook, but it would be too messy, instead, we will use a dedicated **ROLE** to make our configuration reusable.
+We have our nice and clean **dev** environment, so let us put it aside and configure 2 new Web Servers as **UAT**. We could write tasks to configure Web Servers in the same playbook, but it would be too messy, instead, we will use a dedicated **role** to make our configuration reusable.
 
-**Roles** let you automatically load related vars, files, tasks, handlers, and other Ansible artifacts based on a known file structure. After you group your content in roles, you can easily reuse them and share them with other users.
+**roles** let you automatically load related vars, files, tasks, handlers, and other Ansible artifacts based on a known file structure. After you group your content in roles, you can easily reuse them and share them with other users.
 
 - 3_A : Launch 2 fresh EC2 instances for UAT Web Server
+
 Using RHEL 9 image, we launch 2 new web sever, we will use them as our UAT servers, so give them names accordingly – **Web1-UAT** and **Web2-UAT**
 
 **TAKE NOTE**: power off all other instances not in use to avoid extra cost. We are just going to be using the Jenkins server and the UAT webservers for this section.
 
 - 3_B : Create a role
-To create a **Role**, You must create a directory called **roles/** , relative to the playbook file or in **/etc/ansible/** directory.
+
+To create a **role**, You must create a directory called **roles/** , relative to the playbook file or in **/etc/ansible/** directory.
 
 There are two ways how you can create this folder structure
 
