@@ -339,7 +339,7 @@ The entire directory structure should look like below after removing unnecessary
 
     4 - Make sure httpd service is started.
 
-Your **main.yml** should consist of following tasks:
+On your WSL, connect to the newly created directory - **roles**, from the Task folder, populate your **main.yml** file with below tasks:
 
 ```
 ---
@@ -373,9 +373,12 @@ Your **main.yml** should consist of following tasks:
     state: absent
 ```
 
+![12_20a](https://github.com/EzeOnoky/Project-Base-Learning-12/assets/122687798/782f7156-7182-4e59-8190-0dd6bec40bcf)
+
+
 ## STEP 4 - REFERENCE WEBSERVER ROLE
 
-Within the **static-assignment** directory, create a new assignment for **uat-webservers uat-webservers.yml**. This is where we will reference the role.
+Within the **static-assignment** directory, create a new assignment for **uat-webservers.yml**. This is where we will reference the role.
 
 Update the uat-webservers.yml file
 
