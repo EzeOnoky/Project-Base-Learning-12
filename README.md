@@ -138,6 +138,15 @@ Let see code re-use in action by importing other playbooks.
 - 2_D : Inside **playbooks/site.yml** file, import **common.yml** playbook.
 
 ```
+mkdir playbooks
+touch site.yml
+mv .\playbooks\common.yml .\static-assignment\
+ls .\static-assignment\
+ls
+```
+
+
+```
 ---
 - hosts: all
 - import_playbook: ../static-assignments/common.yml
