@@ -103,7 +103,8 @@ To test this setup, we will be making some changes in the README.MD file inside 
 
 If both Jenkins jobs have completed one after another – you shall see your files inside **/home/ubuntu/ansible-config-artifact** directory and it will be updated with every commit to your main branch. Remember to update your GITHUB  **ansible-config-mgt** repository with the current Ansible URL..
 
-![12_7](https://github.com/EzeOnoky/Project-Base-Learning-12/assets/122687798/85ddef8f-a3a3-4b38-baf2-9c5559d3f5e3)
+![12_7](https://github.com/EzeOnoky/Project-Base-Learning-12/assets/122687798/d6e24db0-a2eb-4d31-891b-340667f791b3)
+
 
 ## STEP 2 - REFACTOR ANSIBLE CODE BY IMPORTING OTHER PLAYBOOKS INTO SITE.YML
 
