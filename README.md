@@ -419,8 +419,13 @@ Create a pull request, then merge to main branch, The Jenkins builds automatical
 
 ![12_21](https://github.com/EzeOnoky/Project-Base-Learning-12/assets/122687798/f084ae6f-6702-489b-ae6a-1557955a6a3a)
 
+After the merging the changes made on the **refactor** branch to the **main** branch, proceed to your Jenkins-Ansible server, run `git pull`, this targets to pull into your Jenkins-Ansible server, the most recent code from GIT Hub.
 
-Ensure you are able to 1st ssh into the slave Jenkins Server...from the Master Jenkins server
+
+![12_21a](https://github.com/EzeOnoky/Project-Base-Learning-12/assets/122687798/a9d1c7aa-02b2-4547-bb66-3b662ab18df4)
+
+
+Now, ensure you are able to ssh into the slave Jenkins Server...from the Master Jenkins server
 
 ```
 ssh ec2-user@172.31.42.157
@@ -435,11 +440,9 @@ Run an Ansible ping test to confirm you slave Jenkins servers on the **uat.yml**
 
 `ansible all -m ping -i inventory/uat.yml`
 
-Now we run the playbook, ensure you ssh into your Jenkins-Ansible Server and open the folder of the latest build on this path - 
+Now we run the playbook, cd to your /home/ubuntu and execute below...
 
-`/var/lib/jenkins/jobs/ANSIBLE/builds/11/`
-
-`ansible-playbook -i /ansible-config-artifact/inventory/uat.yml /ansible-config-artifact/playbooks/site.yml`
+`sudo ansible-playbook -i /home/ubuntu/ansible-config-mgt/inventory/uat.yml /home/ubuntu/ansible-config-mgt/playbooks/site.yml`
 
 ![12_24](https://github.com/EzeOnoky/Project-Base-Learning-12/assets/122687798/9929f4e0-89b1-49dc-8442-29d71f0ec21c)
 
@@ -452,10 +455,16 @@ We should be able to see both of the UAT Webservers configured and can reach the
 
 http://<Web01-UAT-Server-Public-IP-or-Public-DNS-Name>/index.php
 
-**NOTE** Below changes will be required, if our default apache page is to change to the tooling website page....
+**NOTE** Below changes will be required, if the tooling websitepage is not loading.
 
 ```
 sudo systemctl status httpd
+sudo systemctl start httpd
+```
+
+Run below further changes to get the desired toolong page output
+
+``
 cd ..
 sudo setenforce 0
 sudo vi /etc/sysconfig/selinux        => set SELINUX=enforcing to SELINUX=disabled
